@@ -28,7 +28,7 @@ module "vpc" {
 
   tags = {
     Environment = "test"
-    Project     = "lwplabs1"
+    Project     = "lwplabs2"
     ManagedBy   = "terraform"
   }
 }
