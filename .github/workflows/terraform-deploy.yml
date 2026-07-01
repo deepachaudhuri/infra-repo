@@ -17,7 +17,8 @@ jobs:
     name: Terraform Plan and Apply
     runs-on: ubuntu-latest
 
-    environment: ${{ github.base_ref }}
+    environment: #${{ github.base_ref }}
+      name: ${{ github.event_name == 'pull_request' && github.base_ref || github.ref_name }}
 
     permissions:
       contents: read
@@ -54,7 +55,11 @@ jobs:
         working-directory: ./
         run: terraform plan -input=false -out=tfplan
 
+    #   - name: Terraform apply
+    #     if: github.event_name == 'push' && (startsWith(github.base_ref, 'refs/heads/dev') || startsWith(github.base_ref, 'refs/heads/stage') || startsWith(github.base_ref, 'refs/heads/prod'))
+    #     working-directory: ./
+    #     run: terraform apply -input=false tfplan
+
       - name: Terraform apply
-        if: github.event_name == 'push' && (startsWith(github.base_ref, 'refs/heads/dev') || startsWith(github.base_ref, 'refs/heads/stage') || startsWith(github.base_ref, 'refs/heads/prod'))
-        working-directory: ./
+        if: github.event_name == 'push'
         run: terraform apply -input=false tfplan
