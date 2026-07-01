@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "vpc" {
-  source = "../aws-modules/vpc"
+  source = "git::https://github.com/deepachaudhuri/aws-modules.git//vpc?ref=master"
 
   name       = "test-vpc"
   cidr_block = "10.40.0.0/16"
