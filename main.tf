@@ -5,18 +5,18 @@ provider "aws" {
 module "vpc" {
   source = "git::https://github.com/deepachaudhuri/aws-modules.git//vpc?ref=master"
 
-  name       = "test-vpc"
+  name       = "dev-vpc"
   cidr_block = "10.40.0.0/16"
 
   subnets = [
     {
-      name              = "test-public-a"
+      name              = "dev-public-a"
       cidr_block        = "10.40.1.0/24"
       availability_zone = "us-east-1a"
       type              = "public"
     },
     {
-      name              = "test-private-a"
+      name              = "dev-private-a"
       cidr_block        = "10.40.11.0/24"
       availability_zone = "us-east-1a"
       type              = "private"
@@ -27,7 +27,7 @@ module "vpc" {
   enable_nat_gateway      = false
 
   tags = {
-    Environment = "test"
+    Environment = "dev"
     Project     = "lwplabs"
     ManagedBy   = "terraform"
   }
