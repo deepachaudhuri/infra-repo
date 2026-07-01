@@ -6,6 +6,11 @@ on:
       - dev
       - stage
       - prod
+  push:
+    branches:
+      - dev
+      - stage
+      - prod
 
 jobs:
   terraform:
