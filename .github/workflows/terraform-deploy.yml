@@ -31,7 +31,7 @@ jobs:
 
       - name: Terraform init
         working-directory: ./
-        run: terraform init -input=false -verify-plugins=false
+        run: terraform init -input=false
 
       - name: Terraform validate
         working-directory: ./
