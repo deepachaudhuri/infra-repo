@@ -12,7 +12,7 @@ jobs:
     name: Terraform Plan and Apply
     runs-on: ubuntu-latest
 
-    environment: ${{ github.ref_name }}
+    environment: ${{ github.base_ref }}
 
     permissions:
       contents: read
@@ -24,10 +24,17 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.6.0
+          terraform_version: latest
 
       - name: Terraform init
         working-directory: ./
@@ -38,10 +45,11 @@ jobs:
         run: terraform validate
 
       - name: Terraform plan
+        if: github.event_name == 'pull_request' || github.event_name == 'push'
         working-directory: ./
         run: terraform plan -input=false -out=tfplan
 
       - name: Terraform apply
-        if: github.event_name == 'pull_request' && github.event.action == 'submitted'
+        if: github.event_name == 'push' && (startsWith(github.ref, 'refs/heads/dev') || startsWith(github.ref, 'refs/heads/stage') || startsWith(github.ref, 'refs/heads/prod'))
         working-directory: ./
         run: terraform apply -input=false tfplan
