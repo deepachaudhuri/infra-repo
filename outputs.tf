@@ -13,7 +13,7 @@ output "private_subnet_ids" {
   value       = module.vpc.private_subnet_ids
 }
 
-## this is commented when I'll be running next
+## this is commented when I'll be running next - Deepa 2Jul 2026
 # output "eks_cluster_id" {
 #   description = "The ID/name of the EKS cluster"
 #   value       = module.eks.cluster_id
