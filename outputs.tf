@@ -8,10 +8,10 @@ output "subnet_ids" {
   value       = module.vpc.subnet_ids
 }
 
-output "private_subnet_ids" {
-  description = "The private subnet IDs created by the module"
-  value       = module.vpc.private_subnet_ids
-}
+# output "private_subnet_ids" {
+#   description = "The private subnet IDs created by the module"
+#   value       = module.vpc.private_subnet_ids
+# }
 
 ## this is commented when I'll be running next - Deepa 2Jul 2026
 # output "eks_cluster_id" {
