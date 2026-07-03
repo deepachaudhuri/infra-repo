@@ -36,7 +36,7 @@ module "vpc" {
   ]
 
   create_internet_gateway = true
-  enable_nat_gateway      = false
+  enable_nat_gateway      = true
 
   tags = {
     Environment = "dev"
