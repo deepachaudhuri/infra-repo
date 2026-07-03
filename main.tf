@@ -45,35 +45,35 @@ module "vpc" {
   }
 }
 
-# module "eks" {
-#   source = "git::https://github.com/deepachaudhuri/aws-modules.git//eks?ref=master"
+module "eks" {
+  source = "git::https://github.com/deepachaudhuri/aws-modules.git//eks?ref=master"
 
-#   cluster_name       = "dev-eks-cluster"
-#   kubernetes_version = "1.34"
-#   subnet_ids         = module.vpc.private_subnet_ids
+  cluster_name       = "dev-eks-cluster"
+  kubernetes_version = "1.34"
+  subnet_ids         = module.vpc.private_subnet_ids
 
-#   node_groups = [
-#     {
-#       name           = "general"
-#       subnet_ids     = module.vpc.private_subnet_ids
-#       desired_size   = 2
-#       min_size       = 1
-#       max_size       = 4
-#       instance_types = ["t3.medium"]
-#       disk_size      = 20
-#     }
-#   ]
+  node_groups = [
+    {
+      name           = "general"
+      subnet_ids     = module.vpc.private_subnet_ids
+      desired_size   = 2
+      min_size       = 1
+      max_size       = 4
+      instance_types = ["t3.medium"]
+      disk_size      = 20
+    }
+  ]
 
-#   enable_aws_load_balancer_controller = true
-#   enable_ebs_csi_driver               = true
-#   enable_efs_csi_driver               = true
-#   enable_cloudwatch_observability     = true
+  enable_aws_load_balancer_controller = true
+  enable_ebs_csi_driver               = true
+  enable_efs_csi_driver               = true
+  enable_cloudwatch_observability     = true
 
-#   tags = {
-#     Environment = "dev"
-#     Project     = "lwplabs3"
-#     ManagedBy   = "terraform"
-#   }
+  tags = {
+    Environment = "dev"
+    Project     = "lwplabs3"
+    ManagedBy   = "terraform"
+  }
 
-#   depends_on = [module.vpc]
-# }
+  depends_on = [module.vpc]
+}
