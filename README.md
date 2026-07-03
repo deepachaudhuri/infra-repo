@@ -2,7 +2,7 @@
 
 This repository demonstrates production-ready infrastructure automation using Terraform, with a focus on EKS (Kubernetes) deployment and best practices. Perfect for interview preparation!
 
-## Architecture-full
+## Architecture
 
 ```
 VPC (10.40.0.0/16)
