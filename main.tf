@@ -36,11 +36,11 @@ module "vpc" {
   ]
 
   create_internet_gateway = true
-  enable_nat_gateway      = true
+  enable_nat_gateway      = false
 
   tags = {
     Environment = "dev"
-    Project     = "lwplabs"
+    Project     = "test2"
     ManagedBy   = "terraform"
   }
 }
