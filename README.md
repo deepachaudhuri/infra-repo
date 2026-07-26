@@ -2,35 +2,7 @@
 
 This repository demonstrates production-ready infrastructure automation using Terraform, with a focus on EKS (Kubernetes) deployment and best practices. Perfect for interview preparation!
 
-## Architecture
-
-```
-VPC (10.40.0.0/16)
-├── Public Subnets (10.40.1.0/24, 10.40.2.0/24)
-│   └── NAT Gateway
-└── Private Subnets (10.40.11.0/24, 10.40.12.0/24)
-    └── EKS Cluster + Worker Nodes
-        ├── Load Balancer Controller (Add-on)
-        ├── EBS CSI Driver (Add-on)
-        ├── EFS CSI Driver (Add-on)
-        └── CloudWatch Observability (Add-on)
-```
-
-## Table of Contents
-
-- [Quick Start](#quick-start)
-- [Infrastructure Components](#infrastructure-components)
-- [Kubernetes Basics](#kubernetes-basics)
-- [Kubernetes Objects](#kubernetes-objects)
-- [Storage: EBS vs EFS](#storage-ebs-vs-efs)
-- [IRSA - IAM Roles for Service Accounts](#irsa---iam-roles-for-service-accounts)
-- [Step-by-Step Kubernetes Deployment](#step-by-step-kubernetes-deployment)
-- [Interview Q&A](#interview-qa)
-- [Troubleshooting](#troubleshooting)
-
-## Quick Start
-
-### 1. Deploy Infrastructure
+## Run-deepa
 
 ```bash
 # Initialize Terraform with S3 backend
