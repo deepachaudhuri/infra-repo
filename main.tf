@@ -68,3 +68,38 @@ module "eks" {
     Project     = "lwplabs"
   }
 }
+
+module "ecr" {
+  source = "git::https://github.com/deepachaudhuri/aws-modules.git//ecr?ref=master"
+
+  enable_default_lifecycle_policy = true
+  default_lifecycle_policy_days   = 30
+  default_lifecycle_policy_count  = 10
+
+  repositories = [
+    {
+      name               = "lwplabs-api"
+      image_tag_mutability = "MUTABLE"
+      scan_on_push       = true
+      encryption_type    = "AES256"
+    },
+    {
+      name               = "lwplabs-web"
+      image_tag_mutability = "MUTABLE"
+      scan_on_push       = true
+      encryption_type    = "AES256"
+    },
+    {
+      name               = "lwplabs-worker"
+      image_tag_mutability = "MUTABLE"
+      scan_on_push       = true
+      encryption_type    = "AES256"
+    }
+  ]
+
+  tags = {
+    Environment = "dev"
+    Project     = "lwplabs"
+    ManagedBy   = "Terraform"
+  }
+}
