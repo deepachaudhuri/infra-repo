@@ -3,7 +3,7 @@ module "vpc" {
 
   name       = "lwplabs-vpc"
   cidr_block = "10.20.0.0/16"
-
+ 
   subnets = [
     {
       name              = "public-1"
