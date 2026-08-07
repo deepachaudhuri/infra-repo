@@ -58,7 +58,7 @@ module "eks" {
     }
   ]
 
-  enable_aws_load_balancer_controller = false
+  enable_aws_load_balancer_controller = true
   enable_ebs_csi_driver               = true
   enable_efs_csi_driver               = true
   enable_cloudwatch_observability     = true
