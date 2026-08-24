@@ -62,6 +62,7 @@ module "eks" {
   enable_ebs_csi_driver               = true
   enable_efs_csi_driver               = true
   enable_cloudwatch_observability     = true
+  enable_cluster_logging              = false
 
   tags = {
     Environment = "dev"
