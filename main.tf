@@ -39,11 +39,6 @@ module "vpc" {
   }
 }
 
-import {
-  to = module.eks.aws_cloudwatch_log_group.cluster[0]
-  id = "/aws/eks/lwplabs-cluster/cluster"
-}
-
 module "eks" {
   source = "git::https://github.com/deepachaudhuri/aws-modules.git//eks?ref=master"
 
@@ -67,6 +62,7 @@ module "eks" {
   enable_ebs_csi_driver               = true
   enable_efs_csi_driver               = true
   enable_cloudwatch_observability     = true
+  enable_cluster_logging              = false
 
   tags = {
     Environment = "dev"
