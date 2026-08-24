@@ -78,19 +78,19 @@ module "ecr" {
 
   repositories = [
     {
-      name               = "lwplabs-api"
+      name               = "lwplabs-product"
       image_tag_mutability = "MUTABLE"
       scan_on_push       = true
       encryption_type    = "AES256"
     },
     {
-      name               = "lwplabs-web"
+      name               = "lwplabs-login"
       image_tag_mutability = "MUTABLE"
       scan_on_push       = true
       encryption_type    = "AES256"
     },
     {
-      name               = "lwplabs-worker"
+      name               = "lwplabs-order"
       image_tag_mutability = "MUTABLE"
       scan_on_push       = true
       encryption_type    = "AES256"
