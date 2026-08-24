@@ -39,6 +39,11 @@ module "vpc" {
   }
 }
 
+import {
+  to = module.eks.aws_cloudwatch_log_group.cluster[0]
+  id = "/aws/eks/lwplabs-cluster/cluster"
+}
+
 module "eks" {
   source = "git::https://github.com/deepachaudhuri/aws-modules.git//eks?ref=master"
 
